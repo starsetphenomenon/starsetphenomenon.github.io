@@ -6,6 +6,7 @@ const drop_menu = document.querySelector('.drop_menu'),
   thanks_close = document.querySelector('.thanks__close'),
   contacts_overlay = document.querySelector('.contacts__overlay'),
   thanks = document.querySelector('.thanks'),
+  preloader = document.querySelector('.preloader'),
   menuLinks = document.querySelectorAll('.menu__link[data-goto]');
 
 
@@ -89,3 +90,10 @@ var wow = new WOW({
 });
 
 wow.init();
+
+
+// PRELOADER
+
+window.onload = function () {
+  preloader.classList.add('prenone');
+}
