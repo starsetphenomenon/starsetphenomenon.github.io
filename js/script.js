@@ -7,7 +7,26 @@ const drop_menu = document.querySelector('.drop_menu'),
   contacts_overlay = document.querySelector('.contacts__overlay'),
   thanks = document.querySelector('.thanks'),
   preloader = document.querySelector('.preloader'),
-  menuLinks = document.querySelectorAll('.menu__link[data-goto]');
+  menuLinks = document.querySelectorAll('.menu__link[data-goto]'),
+  cameraItem = document.querySelectorAll('.camera__wrapper__item');
+
+
+
+// gallery photos class switcher
+
+  cameraItem.forEach(link => {
+    link.addEventListener('click', () => {
+      cameraItem.forEach(item => {
+        item.classList.remove('cam_active');
+      });
+      link.classList.add('cam_active');
+      setTimeout(function () {
+        menu.classList.remove('cam_active');
+      }, 9000);
+    });
+  });
+
+
 
 
 drop_menu.addEventListener('click', () => {
@@ -53,7 +72,7 @@ if (menuLinks.length > 0) {
     if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
       const gotoBlock = document.querySelector(menuLink.dataset.goto);
       const gotoBlockValue = gotoBlock.getBoundingClientRect().top;
-      
+
       window.scrollTo({
         top: gotoBlockValue,
         behavior: "smooth"
@@ -97,3 +116,14 @@ wow.init();
 window.onload = function () {
   preloader.classList.add('prenone');
 }
+
+// theme switcher
+
+$('.switch-toggle').click(function () {
+  body = document.getElementsByTagName('body')[0];
+  if ($('#theme').attr('checked') == "checked") {
+    body.classList.toggle("light-theme");
+  } else {
+    body.classList.toggle("dark-theme");
+  }
+});
