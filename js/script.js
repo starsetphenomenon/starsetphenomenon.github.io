@@ -15,22 +15,22 @@ const drop_menu = document.querySelector('.drop_menu'),
 
 // gallery photos class switcher
 
-  cameraItem.forEach(link => {
-    link.addEventListener('click', () => {
-      cameraItem.forEach(item => {
-        item.classList.remove('cam_active');
-      });
-      link.classList.add('cam_active');
-      // set the background of gallery by a current image
-      let linkBg = link.getElementsByTagName("img")[0].src;
-      camBag.style.cssText = `background: url(${linkBg}) no-repeat center center;
-      background-size: cover;
-      border-radius: 16px;`; 
-      setTimeout(function () {
-        menu.classList.remove('cam_active');
-      }, 9000);
+cameraItem.forEach(link => {
+  link.addEventListener('click', () => {
+    cameraItem.forEach(item => {
+      item.classList.remove('cam_active');
     });
+    link.classList.add('cam_active');
+    // set the background of gallery by a current image
+    let linkBg = link.getElementsByTagName("img")[0].src;
+    camBag.style.cssText = `background: url(${linkBg}) no-repeat center center;
+      background-size: cover;
+      border-radius: 16px;`;
+    setTimeout(function () {
+      menu.classList.remove('cam_active');
+    }, 9000);
   });
+});
 
 
 
@@ -99,7 +99,7 @@ szazalek.forEach((item, i) => {
 
 
 
-var wow = new WOW({
+let wow = new WOW({
 
   boxClass: 'wow', // animated element css class (default is wow)
   animateClass: 'animated', // animation css class (default is animated)
@@ -132,4 +132,36 @@ $('.switch-toggle').click(function () {
   } else {
     body.classList.toggle("dark-theme");
   }
+});
+
+
+// SVG Animation
+
+const path = document.querySelector('#portfolio-svg-animation');
+
+let pathLength = path.getTotalLength();
+
+// Check the if elem in a view or not?
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+
+  );
+}
+
+document.addEventListener('scroll', function () {
+  if (isInViewport(path)) {    
+      path.classList.remove('not-active-svg');
+      path.classList.add('active-svg');
+  } else {
+    path.classList.remove('active-svg');
+    path.classList.add('not-active-svg');
+  }
+
+}, {
+  passive: true
 });
