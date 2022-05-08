@@ -165,3 +165,14 @@ document.addEventListener('scroll', function () {
 }, {
   passive: true
 });
+
+// Parallax effect
+/* 
+let parallaxButton = document.getElementById('parallaxButton');
+
+window.addEventListener('scroll', function() {
+  
+  let value = window.scrollY;
+
+  parallaxButton.style.right = -value * 0.1 + 'px';
+}); */
