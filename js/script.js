@@ -89,14 +89,30 @@ if (menuLinks.length > 0) {
 }
 
 
+// Perecent block 
 
-const szazalek = document.querySelectorAll('.percent__value'),
-  lines = document.querySelectorAll('.percent__area');
+let percentBlock = document.querySelector('.percent');
+document.addEventListener('scroll', function () {
 
-szazalek.forEach((item, i) => {
-  lines[i].style.width = item.innerHTML;
+  const szazalek = document.querySelectorAll('.percent__value'),
+    lines = document.querySelectorAll('.percent__area');
+
+// Percent animation if it is in a view field and if it's not.
+
+  if (isInViewport(percentBlock)) {
+
+
+
+    szazalek.forEach((item, i) => {
+      lines[i].style.width = item.innerHTML;
+    });
+
+  } else {
+    szazalek.forEach((item, i) => {
+      lines[i].style.width = 0;
+    });
+  }
 });
-
 
 
 let wow = new WOW({
@@ -154,9 +170,9 @@ function isInViewport(el) {
 }
 
 document.addEventListener('scroll', function () {
-  if (isInViewport(path)) {    
-      path.classList.remove('not-active-svg');
-      path.classList.add('active-svg');
+  if (isInViewport(path)) {
+    path.classList.remove('not-active-svg');
+    path.classList.add('active-svg');
   } else {
     path.classList.remove('active-svg');
     path.classList.add('not-active-svg');
