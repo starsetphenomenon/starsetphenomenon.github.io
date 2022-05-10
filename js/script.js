@@ -99,6 +99,18 @@ document.addEventListener('scroll', function () {
 
   // Percent animation if it is in a view field and if it's not.
 
+  //Check element is in view?
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+
+    );
+  }
+
   if (isInViewport(percentBlock)) {
 
 
@@ -153,7 +165,7 @@ $('.switch-toggle').click(function () {
 
 // SVG Animation
 
-const path = document.querySelector('#portfolio-svg-animation');
+/* const path = document.querySelector('#portfolio-svg-animation');
 
 let pathLength = path.getTotalLength();
 
@@ -180,7 +192,7 @@ document.addEventListener('scroll', function () {
 
 }, {
   passive: true
-});
+}); */
 
 // Parallax effect
 /* 
@@ -223,3 +235,50 @@ mouseOverContainer.onmousemove = function (e) {
     transformElement(ex1Layer, position);
   });
 }; */
+
+
+/* if(screen.width < 900){
+  console.log('yeaaepp');
+  const tiltElements = document.querySelectorAll('[data-tilt]');
+  tiltElements.style.transform = "inherit";
+} */
+
+
+// Promo element animation after MOUSE effect
+
+/* let constrain = 20;
+let mouseOverContainer = document.getElementById("promo");
+let ex1Layer = document.getElementById("promo__IllustAnim");
+
+function transforms(x, y, el) {
+  let box = el.getBoundingClientRect();
+  let calcX = -(y - box.y - (box.height / 2)) / constrain;
+  let calcY = (x - box.x - (box.width / 2)) / constrain;
+
+  return "perspective(2000px) " +
+    "   rotateX(" + calcX + "deg) " +
+    "   rotateY(" + calcY + "deg) ";
+};
+
+function transformElement(el, xyEl) {
+  el.style.transform = transforms.apply(null, xyEl);
+}
+
+mouseOverContainer.onmousemove = function (e) {
+  let xy = [e.clientX, e.clientY];
+  let position = xy.concat([ex1Layer]);
+
+  window.requestAnimationFrame(function () {
+    transformElement(ex1Layer, position);
+  });
+}; */
+
+/* 
+let toolsItem = document.querySelectorAll('.tools__item__inner');
+
+toolsItem.forEach(toolsItem => {
+  toolsItem.addEventListener('click', function handleClick(event) {   
+
+    toolsItem.classList.toggle('toolsItemsCLick');
+  });
+}); */
