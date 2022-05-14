@@ -33,7 +33,7 @@ cameraItem.forEach(link => {
 });
 
 
-
+// Drop menu
 
 drop_menu.addEventListener('click', () => {
   menu.classList.add('active');
@@ -153,7 +153,7 @@ window.onload = function () {
 
 // theme switcher
 
-$('.switch-toggle').click(function () {
+$('.theme-toggle').click(function () {
   body = document.getElementsByTagName('body')[0];
   if ($('#theme').attr('checked') == "checked") {
     body.classList.toggle("light-theme");
