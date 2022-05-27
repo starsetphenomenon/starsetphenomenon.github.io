@@ -114,6 +114,7 @@ if (menuLinks.length > 0) {
 // Perecent block 
 
 let percentBlock = document.querySelector('.percent');
+let percentItem = document.querySelectorAll('.percent__item')
 document.addEventListener('scroll', function () {
 
   const szazalek = document.querySelectorAll('.percent__value'),
@@ -133,19 +134,13 @@ document.addEventListener('scroll', function () {
     );
   }
 
-  if (isInViewport(percentBlock)) {
-
-
-
-    szazalek.forEach((item, i) => {
+  szazalek.forEach((item, i) => {
+    if (isInViewport(item)) {
       lines[i].style.width = item.innerHTML;
-    });
-
-  } else {
-    szazalek.forEach((item, i) => {
+    } else {
       lines[i].style.width = 0;
-    });
-  }
+    }
+  });
 });
 
 
