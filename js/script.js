@@ -8,7 +8,7 @@ const drop_menu = document.querySelector('.drop_menu'),
   thanks = document.querySelector('.thanks'),
   preloader = document.querySelector('.preloader'),
   menuLinks = document.querySelectorAll('.menu__link[data-goto]'),
-  camBag = document.getElementById('camera'),
+  camBag = document.getElementById('camera__bgAnimation'),
   cameraItem = document.querySelectorAll('.camera__wrapper__item');
 
 
