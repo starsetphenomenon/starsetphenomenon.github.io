@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/* $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault();
         $.ajax({
@@ -12,4 +12,4 @@ $(document).ready(function () {
         });
         return false;
     });
-});
+}); */
