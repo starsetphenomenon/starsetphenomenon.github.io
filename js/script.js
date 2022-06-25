@@ -35,7 +35,7 @@ cameraItem.forEach(link => {
 
 // Drop menu
 
-drop_menu.addEventListener('click', () => {
+drop_menu.addEventListener('click', (e) => {
   menu.classList.add('active');
 });
 
