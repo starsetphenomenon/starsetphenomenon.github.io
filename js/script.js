@@ -9,7 +9,10 @@ const drop_menu = document.querySelector('.drop_menu'),
   preloader = document.querySelector('.preloader'),
   menuLinks = document.querySelectorAll('.menu__link[data-goto]'),
   camBag = document.getElementById('camera__bgAnimation'),
-  cameraItem = document.querySelectorAll('.camera__wrapper__item');
+  cameraItem = document.querySelectorAll('.camera__wrapper__item'),
+  projects = document.querySelectorAll('.icon__outer'),
+  projectsBlock = document.getElementById('portfolio'),
+  cursor = document.getElementById("cursor");
 
 
 
@@ -178,3 +181,39 @@ $('.theme-toggle').click(function () {
     body.classList.toggle("dark-theme");
   }
 });
+
+
+// Projects custom cursor and mouse events
+const onProjectHover = function (e) {
+  if (e.currentTarget.getElementsByTagName('img').length > 0) {
+    let bg = e.currentTarget.querySelector('img').src;
+    projectsBlock.style.backgroundImage = `url(${bg})`;
+    cursor.style.width = '120px';
+    cursor.style.height = '120px';
+  }
+};
+
+const onProjectOut = function (e) {
+  projectsBlock.style.backgroundImage = `none`;
+  cursor.style.width = '30px';
+  cursor.style.height = '30px';
+};
+
+const onProjectCursor = function (e) {
+  cursor.style.display = 'block';
+  cursor.style.left = e.clientX + "px",
+    cursor.style.top = e.clientY + "px";
+};
+const onProjectClick = function (e) {
+  let link = e.currentTarget.querySelector('a').href;
+  window.open(link, '_blank');
+};
+const onProjectCursorOut = function (e) {
+  cursor.style.display = 'none';
+};
+
+projects.forEach(elem => elem.addEventListener('mouseover', onProjectHover));
+projects.forEach(elem => elem.addEventListener('mouseout', onProjectOut));
+projects.forEach(elem => elem.addEventListener('click', onProjectClick));
+projectsBlock.addEventListener("mouseout", onProjectCursorOut);
+projectsBlock.addEventListener("mousemove", onProjectCursor);
