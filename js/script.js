@@ -14,6 +14,7 @@ const drop_menu = document.querySelector('.drop_menu'),
   projects = document.querySelectorAll('.icon__outer'),
   projectsBlock = document.getElementById('portfolio'),
   projectIcons = document.querySelectorAll('.portfolio__projects__item > .icon'),
+  portBg = document.querySelector('.portfolio__bg'),
   cursor = document.getElementById("cursor");
 
 
@@ -189,7 +190,8 @@ $('.theme-toggle').click(function () {
 const onProjectHover = function (e) {
   if (e.target.classList.contains('circle')) {
     let bg = e.target.querySelector('img').src;
-    projectsBlock.style.backgroundImage = `url(${bg})`;
+    portBg.style.backgroundImage = `url(${bg})`;
+    portBg.style.animation = `300ms bgIn ease-out forwards`;
     cursor.style.width = '120px';
     cursor.style.height = '120px';
   }
@@ -198,9 +200,9 @@ const onProjectHover = function (e) {
 
 const onProjectOut = function (e) {
   if (e.target.classList.contains('circle')) {
-    projectsBlock.style.backgroundImage = `none`;
     cursor.style.width = '30px';
     cursor.style.height = '30px';
+    portBg.style.animation = `200ms bgOut ease-in forwards`;
   }
 };
 
@@ -210,11 +212,10 @@ const onProjectCursor = function (e) {
     cursor.style.top = e.clientY + "px";
 };
 const onProjectClick = function (e) {
-  let link = null;
   if (e.target.classList.contains('circle')) {
     if (!is_touch_device(e.currentTarget)) {
       let link = e.target.querySelector('a').href;
-      window.open(link, '_blank');
+      window.open(link, '_blank');      
     }
   }
   if (e.target.classList.contains('url')) {
