@@ -10,8 +10,10 @@ const drop_menu = document.querySelector('.drop_menu'),
   menuLinks = document.querySelectorAll('.menu__link[data-goto]'),
   camBag = document.getElementById('camera__bgAnimation'),
   cameraItem = document.querySelectorAll('.camera__wrapper__item'),
+  portProjects = document.querySelector('.portfolio__projects'),
   projects = document.querySelectorAll('.icon__outer'),
   projectsBlock = document.getElementById('portfolio'),
+  projectIcons = document.querySelectorAll('.portfolio__projects__item > .icon'),
   cursor = document.getElementById("cursor");
 
 
@@ -185,18 +187,21 @@ $('.theme-toggle').click(function () {
 
 // Projects custom cursor and mouse events
 const onProjectHover = function (e) {
-  if (e.currentTarget.getElementsByTagName('img').length > 0) {
-    let bg = e.currentTarget.querySelector('img').src;
+  if (e.target.classList.contains('circle')) {
+    let bg = e.target.querySelector('img').src;
     projectsBlock.style.backgroundImage = `url(${bg})`;
     cursor.style.width = '120px';
     cursor.style.height = '120px';
   }
 };
 
+
 const onProjectOut = function (e) {
-  projectsBlock.style.backgroundImage = `none`;
-  cursor.style.width = '30px';
-  cursor.style.height = '30px';
+  if (e.target.classList.contains('circle')) {
+    projectsBlock.style.backgroundImage = `none`;
+    cursor.style.width = '30px';
+    cursor.style.height = '30px';
+  }
 };
 
 const onProjectCursor = function (e) {
@@ -205,15 +210,35 @@ const onProjectCursor = function (e) {
     cursor.style.top = e.clientY + "px";
 };
 const onProjectClick = function (e) {
-  let link = e.currentTarget.querySelector('a').href;
-  window.open(link, '_blank');
+  let link = null;
+  if (e.target.classList.contains('circle')) {
+    if (!is_touch_device(e.currentTarget)) {
+      let link = e.target.querySelector('a').href;
+      window.open(link, '_blank');
+    }
+  }
+  if (e.target.classList.contains('url')) {
+    let link = e.target.querySelector('a').href;
+    window.open(link, '_blank');
+  }
 };
+
+const is_touch_device = function (e) {
+  try {
+    document.createEvent("TouchEvent");
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
 const onProjectCursorOut = function (e) {
   cursor.style.display = 'none';
 };
 
-projects.forEach(elem => elem.addEventListener('mouseover', onProjectHover));
-projects.forEach(elem => elem.addEventListener('mouseout', onProjectOut));
-projects.forEach(elem => elem.addEventListener('click', onProjectClick));
+
+portProjects.addEventListener('mouseover', onProjectHover);
+portProjects.addEventListener('mouseout', onProjectOut);
+portProjects.addEventListener('click', onProjectClick);
 projectsBlock.addEventListener("mouseout", onProjectCursorOut);
 projectsBlock.addEventListener("mousemove", onProjectCursor);
