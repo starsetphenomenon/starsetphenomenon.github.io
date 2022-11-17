@@ -1,5 +1,5 @@
 window.addEventListener("load", (event) => {
-  window.location = "https://starsetphenomenon.herokuapp.com/";
+  window.location = "https://roman-viznij.site/";
 });
 
 const drop_menu = document.querySelector('.drop_menu'),
