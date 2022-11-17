@@ -1,5 +1,5 @@
 window.addEventListener("load", (event) => {
-  window.location = "https://portfolio-two-dun-22.vercel.app/";
+  window.location = "https://starsetphenomenon.herokuapp.com/";
 });
 
 const drop_menu = document.querySelector('.drop_menu'),
